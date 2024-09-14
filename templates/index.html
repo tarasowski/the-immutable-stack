@@ -12,20 +12,22 @@
 
 <body>
     <main>
+        {% include 'partials/nav.html' %}
         <section>
             <article>
                 <h1 x-data="{ message: 'I ❤ The Shit Stack' }" x-text="message"></h1>
-                <div x-data="{ count: 0 }">
-                    <button x-on:click="count++">Increment</button>
+                <section>
 
-                    <span x-text="count"></span>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/client">Client</a></li>
-                        <li><a href="/hybrid">Hybrid</a></li>
-                    </ul>
+                    <div x-data="{ count: 0 }">
+                        <button x-on:click="count++">Increment</button>
+
+                        <span x-text="count"></span>
+                    </div>
+                </section>
+                <section>
+
+                    {% include 'partials/modal.html' %}
+                </section>
             </article>
         </section>
         {% include 'partials/form.html' %}
