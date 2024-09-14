@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="{{ url_for('static', filename='js/htmx.min.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/alpine.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pico.classless.min.css') }}">
+    <title>To-Do List App</title>
+</head>
+
+<body>
+    <main>
+        <section>
+            <article>
+                <h1 x-data="{ message: 'I ❤ The Shit Stack' }" x-text="message"></h1>
+                <div x-data="{ count: 0 }">
+                    <button x-on:click="count++">Increment</button>
+
+                    <span x-text="count"></span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/client">Client</a></li>
+                        <li><a href="/hybrid">Hybrid</a></li>
+                    </ul>
+            </article>
+        </section>
+        {% include 'partials/form.html' %}
+        {% include 'partials/todos.html' %}
+    </main>
+</body>
+
+</html>

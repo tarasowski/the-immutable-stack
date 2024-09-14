@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <script defer src="{{ url_for('static', filename='js/alpine.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pico.classless.min.css') }}">
+    <style>
+        .loading {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>This is Alpinejs only implementation</h1>
+        <div class="grid" x-data="{ loading: false, counter: {{ counter_value }} }">
+            <div>
+                <button x-on:click="loading = true; fetch('/increment')
+                    .then(response => response.json())
+                    .then(data => {counter = data; loading = false})">
+                    Increment Counter
+                </button>
+            </div>
+            <div>
+                <div id="counter" x-text="counter"></div>
+                <div x-show="loading" class="loading">Loading...</div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

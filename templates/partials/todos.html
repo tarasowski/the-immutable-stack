@@ -1,0 +1,23 @@
+<section>
+    <article>
+        <h2>To-Do List</h2>
+        <!-- Form to add new tasks -->
+        <form hx-on::after-request="this.reset()" hx-post="/add" hx-target="#todo-list" hx-swap="beforeend">
+            <input type="text" name="task" placeholder="New task" required>
+            <button type="submit">Add Task</button>
+            <p x-text="task"></p>
+        </form>
+        </form>
+        <ul id="todo-list">
+            {% for task in tasks %}
+            <li id="task-{{ task['id'] }}">
+                {{ task['task'] }}
+                <button hx-delete="/delete/{{ task['id'] }}" hx-trigger="click" hx-target="#task-{{ task['id'] }}"
+                    hx-swap="outerHTML">
+                    Remove
+                </button>
+            </li>
+            {% endfor %}
+        </ul>
+    </article>
+</section>

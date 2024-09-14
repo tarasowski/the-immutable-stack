@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMX and Alpine.js Example</title>
+    <script defer src="{{ url_for('static', filename='js/htmx.min.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/alpine.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pico.classless.min.css') }}">
+    <style>
+        .loading {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>HTMX and Alpine.js Implementation</h1>
+        <div class="grid" x-data="{ loading: false, counter: {{ counter_value }}} ">
+            <div>
+                <button hx-on::after-request="this.dispatchEvent(new CustomEvent('loaded-ok', {}))"
+                    x-on:loaded-ok="loading = false" x-on:click="loading = true" hx-get="/increment"
+                    hx-target="#counter" hx-trigger="click">
+                    Increment Counter
+                </button>
+            </div>
+            <div>
+
+                <div id="counter" x-text="counter">
+                </div>
+                <div x-show="loading" class="loading">
+                    Loading...
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
