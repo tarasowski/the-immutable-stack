@@ -1,24 +1,26 @@
 <div x-data="{isOpen: false}">
     <button x-on:click="isOpen = true">Open Modal</button>
     <dialog x-bind:open="isOpen">
-        <div x-on:click.away="isOpen = false">
-            <article>
-                <header>
-                    <button x-on:click="isOpen = false" aria-label="Close" rel="prev"></button>
-                    <p>
-                        <strong>🗓️ Thank You for Registering!</strong>
-                    </p>
-                </header>
+        <article>
+            <header>
+                <button x-on:click="isOpen = false" aria-label="Close" rel="prev"></button>
                 <p>
-                    We're excited to have you join us for our
-                    upcoming event. Please arrive at the museum
-                    on time to check in and get started.
+                    <strong>🗓️ Thank You for Registering!</strong>
                 </p>
-                <ul>
-                    <li>Date: Saturday, April 15</li>
-                    <li>Time: 10:00am - 12:00pm</li>
-                </ul>
-            </article>
-        </div>
+            </header>
+            <p>
+                We're excited to have you join us for our
+                upcoming event. Please arrive at the museum
+                on time to check in and get started.
+            </p>
+            <ul>
+                <li>Date: Saturday, April 15</li>
+                <li>Time: 10:00am - 12:00pm</li>
+            </ul>
+            <footer>
+                <button x-on:click="isOpen = false">Apply</button>
+                <button x-on:click="isOpen = false">Cancel</button>
+            </footer>
+        </article>
     </dialog>
 </div>
